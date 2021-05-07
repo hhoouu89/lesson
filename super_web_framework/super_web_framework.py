@@ -1,5 +1,6 @@
 import quopri
 from super_web_framework.views.shared.page_not_found_404 import PageNotFound404
+from super_web_framework.web_requests import GetRequests, PostRequests
 
 
 class SuperWebFramework:
@@ -33,8 +34,17 @@ class SuperWebFramework:
             view = self.url_routes[url_end]
         return view
 
-    def create_request(self) -> dict:
+    def create_request(self, environment: dict) -> dict:
         request = dict()
+        method = request['method'] = environment['REQUEST_METHOD']
+        if method == 'POST':
+            data = PostRequests().get_request_params(environment)
+            request['data'] = data
+            print(f'Пришёл post-запрос: {SuperWebFramework.decode_value(data)}')
+        elif method == 'GET':
+            request_params = GetRequests().get_request_params(environment)
+            request['request_params'] = request_params
+            print(f'Пришли GET-параметры: {request_params}')
         for front_layer_action in self.front_layer_actions:
             front_layer_action(request)
         return request
@@ -42,7 +52,7 @@ class SuperWebFramework:
     def __call__(self, environment: dict, start_response):
         url_end = SuperWebFramework.__get_url_end(environment)
         view = self.__get_view(url_end)
-        request = self.create_request()
+        request = self.create_request(environment)
         result_code, html_content = view(request)
         start_response(result_code, [('Content-Type', 'text/html')])
         return [html_content.encode('utf-8')]

@@ -1,6 +1,7 @@
 from datetime import date
 from super_web_framework.views.index import Index
 from super_web_framework.views.about import About
+from super_web_framework.views.contact import Contact
 
 
 def front_layer_1(request):
@@ -17,4 +18,5 @@ routes = {
     '/': Index(),
     '/index/': Index(),
     '/about/': About(),
+    '/contact/': Contact(),
 }
