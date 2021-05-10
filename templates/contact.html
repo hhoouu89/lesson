@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Техподдержка</h1>
+{% extends "base.html" %}
+{% block title %}
+	Обучение программированию
+{% endblock %}
+{% block style %}
+	{% include "inc-style.html" %}
+{% endblock %}
+{% block menu %}
+	{% include "inc-menu.html" %}
+{% endblock %}
+{% block body %}
+	<h1>Техподдержка</h1>
     <p>&nbsp;</p>
     <form action="" id="form1" method="post" name="subject" target="_self">
         <fieldset>
@@ -18,9 +22,4 @@
         <p><input name="send" type="submit" value="Отправить"></p>
     </form>
     <p>&nbsp;</p>
-</body>
-</html>
-
-
-
-
+{% endblock %}
