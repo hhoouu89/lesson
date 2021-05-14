@@ -40,10 +40,12 @@ class SuperWebFramework:
         if method == 'POST':
             data = PostRequests().get_request_params(environment)
             request['data'] = data
+            request['post_request_data'] = data
             print(f'Пришёл post-запрос: {SuperWebFramework.decode_value(data)}')
         elif method == 'GET':
             request_params = GetRequests().get_request_params(environment)
             request['request_params'] = request_params
+            request['get_request_data'] = request_params
             print(f'Пришли GET-параметры: {request_params}')
         for front_layer_action in self.front_layer_actions:
             front_layer_action(request)
