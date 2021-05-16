@@ -6,3 +6,7 @@ from super_web_framework.views.courses_list import CoursesList
 from super_web_framework.views.create_course import CreateCourse
 from super_web_framework.views.index import Index
 from super_web_framework.views.study_programs import StudyPrograms
+from super_web_framework.views.student_create import StudentCreateView
+from super_web_framework.views.student_list import StudentListView
+from super_web_framework.views.add_student_by_course import AddStudentByCourseCreateView
+from super_web_framework.views.course_api import CourseApi
