@@ -1,9 +1,11 @@
-from datetime import date
 from super_web_framework.templator import render
-from super_web_framework.views.shared.shared import site, logger
+from super_web_framework.views.shared.shared import *
+from patterns.structural_patterns import *
 
 
+@AppRoute(routes=routes, url='/courses-list/')
 class CoursesList:
+    @Debug(name='CoursesList')
     def __call__(self, request):
         logger.log('Список курсов')
         try:

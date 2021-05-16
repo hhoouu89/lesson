@@ -1,10 +1,11 @@
-from datetime import date
 from super_web_framework.templator import render
-from super_web_framework.views.shared.shared import site, logger
+from super_web_framework.views.shared.shared import *
+from patterns.structural_patterns import *
 
 
+@AppRoute(routes=routes, url='/create-category/')
 class CreateCategory:
-
+    @Debug(name='CreateCategory')
     def __call__(self, request):
         if request['method'] == 'POST':
             print(request)

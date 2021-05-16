@@ -1,11 +1,13 @@
-from datetime import date
 from super_web_framework.templator import render
-from super_web_framework.views.shared.shared import site, logger
+from super_web_framework.views.shared.shared import *
+from patterns.structural_patterns import *
 
 
+@AppRoute(routes=routes, url='/create-course/')
 class CreateCourse:
     category_id = -1
 
+    @Debug(name='CreateCourse')
     def __call__(self, request):
         if request['method'] == 'POST':
             data = request['data']

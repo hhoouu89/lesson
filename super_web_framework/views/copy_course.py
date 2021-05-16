@@ -1,12 +1,13 @@
-from datetime import date
 from super_web_framework.templator import render
-from super_web_framework.views.shared.shared import site, logger
+from super_web_framework.views.shared.shared import *
+from patterns.structural_patterns import *
 
 
+@AppRoute(routes=routes, url='/copy-course/')
 class CopyCourse:
+    @Debug(name='CopyCourse')
     def __call__(self, request):
         request_params = request['request_params']
-
         try:
             name = request_params['name']
             old_course = site.get_course(name)
