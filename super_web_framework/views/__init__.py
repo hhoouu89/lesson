@@ -10,3 +10,4 @@ from super_web_framework.views.student_create import StudentCreateView
 from super_web_framework.views.student_list import StudentListView
 from super_web_framework.views.add_student_by_course import AddStudentByCourseCreateView
 from super_web_framework.views.course_api import CourseApi
+from super_web_framework.views.create_category import CreateCategory
